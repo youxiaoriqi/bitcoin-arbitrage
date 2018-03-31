@@ -160,9 +160,19 @@ class Arbitrer(object):
         import os
         import json
         import pprint
+
+        for i in range(len(self.observers)):
+            if isinstance(self.observers[i], observers.historydumper.HistoryDumper):
+                del self.observers[i]
+
+
         files = os.listdir(directory)
         files.sort()
         for f in files:
+            print(f)
+            if(os.path.splitext(f)[1] != '.json'):
+                continue
+
             depths = json.load(open(directory + '/' + f, 'r'))
             self.depths = {}
             for market in self.market_names:
