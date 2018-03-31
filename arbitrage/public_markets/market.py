@@ -9,12 +9,15 @@ from arbitrage.fiatconverter import FiatConverter
 from arbitrage.utils import log_exception
 
 class Market(object):
+    __fc__ = FiatConverter()
+
     def __init__(self, currency):
         self.name = self.__class__.__name__
         self.currency = currency
         self.depth_updated = 0
         self.update_rate = 60
-        self.fc = FiatConverter()
+        #self.fc = FiatConverter()
+        self.fc = Market.__fc__
         self.fc.update()
 
     def get_depth(self):
