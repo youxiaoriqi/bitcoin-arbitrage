@@ -25,7 +25,7 @@ class ArbitrerCLI:
             self.arbitrer.loop()
         if "replay-history" in args.command:
             self.create_arbitrer(args)
-            self.arbitrer.replay_history(args.replay_history)
+            self.arbitrer.replay_history('history')
         if "get-balance" in args.command:
             self.get_balance(args)
         if "list-public-markets" in args.command:
@@ -89,6 +89,7 @@ class ArbitrerCLI:
         parser.add_argument("command", nargs='*', default="watch",
                             help='verb: "watch|replay-history|get-balance|list-public-markets"')
         args = parser.parse_args()
+        print('after parse_args')
         self.init_logger(args)
         self.exec_command(args)
 
