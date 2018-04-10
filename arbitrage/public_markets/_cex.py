@@ -11,7 +11,8 @@ class CEX(Market):
         self.update_rate = 30
 
     def update_depth(self):
-        url = 'https://cex.io/api/order_book/BTC/%s/' % self.code
+        #url = 'https://cex.io/api/order_book/BTC/%s/' % self.code
+        url = 'https://cex.io/api/order_book/ETH/%s/' % self.code
         req = urllib.request.Request(url, headers={
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "*/*",
